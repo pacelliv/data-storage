@@ -1,7 +1,7 @@
-require("@nomicfoundation/hardhat-toolbox")
-require("dotenv").config()
-require("@nomiclabs/hardhat-etherscan")
+require("@nomiclabs/hardhat-waffle")
 require("hardhat-gas-reporter")
+require("@nomiclabs/hardhat-etherscan")
+require("dotenv").config()
 require("solidity-coverage")
 require("hardhat-deploy")
 
@@ -27,23 +27,46 @@ module.exports = {
         polygon: {
             url: RPC_URL_POLYGON || "https://polygonscan.com/",
             chainId: 137,
-            accounts: [],
+            accounts: [PRIVATE_KEY],
         },
     },
     gasReporter: {
-        enabled: true,
+        enabled: false,
         currency: "USD",
-        outputFile: "gasReport.txt",
+        outputFile: "gas-report-opt.txt",
         noColors: true,
         coinmarketcap: COINMARKETCAP_API_KEY,
         //token: "MATIC",
     },
+    // etherscan: {
+    //     apiKey: ETHERSCAN_API_KEY,
+    // },
     etherscan: {
-        apiKey: ETHERSCAN_API_KEY,
+        // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+        apiKey: {
+            goerli: ETHERSCAN_API_KEY,
+        },
+        // In case the module can't find the goerli etherscan automatically
+        customChains: [
+            {
+                network: "goerli",
+                chainId: 5,
+                urls: {
+                    apiURL: "https://api-goerli.etherscan.io/api",
+                    browserURL: "https://goerli.etherscan.io",
+                },
+            },
+        ],
     },
     namedAccounts: {
         deployer: {
             default: 0,
         },
+        user: {
+            default: 1,
+        },
+    },
+    mocha: {
+        timeout: 500000,
     },
 }

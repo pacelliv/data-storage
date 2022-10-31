@@ -16,10 +16,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         console.log("Waiting for block confirmations...")
         await verify(dataStorage.address, [])
     }
-
-    log(`Contract deployed at: ${dataStorage.address}`)
     log("---------------------------------------------------------------------")
-    console.log(network.config)
+    //console.log(network.config)
 }
 
-module.exports.tags = ["all", "dataStorage"]
+module.exports.tags = ["all", "datastorage"]

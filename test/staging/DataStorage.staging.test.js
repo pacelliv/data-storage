@@ -1,32 +1,27 @@
 const { ethers, getNamedAccounts, network } = require("hardhat")
 const { assert } = require("chai")
 
-if (network.config.chainId === 5 && process.env.ETHERSCAN_API_KEY) {
-    describe("DataStorage", async function () {
-        let dataStorage
-        let deployer
-        beforeEach(async function () {
+if (network.config.chainId === 5) {
+    describe("DataStorage", () => {
+        let dataStorage, deployer
+        beforeEach(async () => {
             deployer = (await getNamedAccounts()).deployer
             dataStorage = await ethers.getContract("DataStorage", deployer)
         })
-
-        it("Checks if the array is empty", async function () {
-            const personName = ""
-            const personId = ""
-            const personEmail = ""
-            const personAmount = "0"
-            const transactionResponse = await dataStorage.addPerson(
-                personName,
-                personId,
-                personEmail,
-                personAmount
+        it("stores and fetch the data", async () => {
+            console.log("storing the data")
+            const txResponse = await dataStorage.addPerson(
+                "Mark",
+                "3-777-3333",
+                "mark@dev",
+                5
             )
-            await transactionResponse.wait(1)
-            const person = await dataStorage.people(0)
-            assert.equal(person.name, personName)
-            assert.equal(person.idNumber, personId)
-            assert.equal(person.email, personEmail)
-            assert.equal(person.amount.toString(), personAmount)
+            await txResponse.wait(1)
+            console.log("fetching the data")
+            const data = await dataStorage.getData("3-777-3333")
+            assert.equal(data[0], "Mark")
+            assert.equal(data[1], "mark@dev")
+            assert.equal(data[2].toString(), "5")
         })
     })
 }
