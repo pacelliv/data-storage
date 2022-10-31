@@ -18,6 +18,13 @@ module.exports = {
     solidity: "0.8.9",
     defaultNetwork: "hardhat",
     networks: {
+        hardhat: {
+            chainId: 31337,
+            blockConfirmations: 1,
+        },
+        localhost: {
+            chainId: 31337,
+        },
         goerli: {
             url: RPC_URL_GOERLI || "https://goerli.net/",
             accounts: [PRIVATE_KEY],
@@ -33,7 +40,7 @@ module.exports = {
     gasReporter: {
         enabled: false,
         currency: "USD",
-        outputFile: "gas-report-opt.txt",
+        outputFile: "gas-report.txt",
         noColors: true,
         coinmarketcap: COINMARKETCAP_API_KEY,
         //token: "MATIC",
