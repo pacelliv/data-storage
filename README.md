@@ -10,8 +10,8 @@ Pass an id number to the `getData` function so you can fetch the stored data ass
 
 ## Getting Started
 
-## Requirements 
-To run this repo install::
+### Requirements 
+To run this repo install:
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
     - After installing the package run in the terminal the command `git --version` and if the installation was successful the output should look like this: `git version x.xx.x`
 - [Node.js](https://nodejs.org/en/)
