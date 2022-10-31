@@ -45,11 +45,7 @@ module.exports = {
         coinmarketcap: COINMARKETCAP_API_KEY,
         //token: "MATIC",
     },
-    // etherscan: {
-    //     apiKey: ETHERSCAN_API_KEY,
-    // },
     etherscan: {
-        // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
         apiKey: {
             goerli: ETHERSCAN_API_KEY,
         },
