@@ -23,8 +23,8 @@ To run this repo install::
 Clone and cd into the repo
 
 ```
-git clone https://github.com/PacelliV/hardhat-fund-me.git
-cd hardhat-fund-me
+git clone https://github.com/PacelliV/data-storage.git
+cd data-storage
 ```
 After opening the folder, install all dependencies with the following command:
 ```
