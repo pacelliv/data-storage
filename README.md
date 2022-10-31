@@ -28,7 +28,7 @@ cd data-storage
 ```
 After opening the folder, install all dependencies with the following command:
 ```
-Yarn
+yarn
 ```
 ## Usage
 After installing all dependencies the project is ready to be compile and deploy, run the next commands in the following order:
